@@ -24,6 +24,50 @@ dependencies {
 }
 ```
 
+## Building the Jitsi Fork
+
+### Prerequisites
+
+Make sure the following dependencies are installed:
+
+- [watchman](https://facebook.github.io/watchman/)
+- [Node.js](https://nodejs.org/)
+- npm
+
+### Set up Android environment
+
+Export the Android SDK path and tools before building:
+
+```bash
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
+```
+
+### Build and publish
+
+1. Set the target SDK version:
+
+```bash
+export OVERRIDE_SDK_VERSION=2.4.0
+```
+
+2. Run the release script, passing the path to the `releases/` directory of this repository as the destination:
+
+```bash
+./android/scripts/release-sdk.sh /path/to/jitsi-meet-android-sdk-releases/releases
+```
+
+For example:
+
+```bash
+./android/scripts/release-sdk.sh ~/StudioProjects/jitsi-meet-android-sdk-releases/releases
+```
+
+The script will build the SDK and output the Maven artifacts directly into the destination directory.
+
 ## Contributing
 
 To publish a new SDK version to this distribution:
